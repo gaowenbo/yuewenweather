@@ -1,0 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+target/
+/.idea/
+.gitignore
+client/src/main/resources/
+project/target/streams/compile/compileIncSetup/
+server/app/const/
