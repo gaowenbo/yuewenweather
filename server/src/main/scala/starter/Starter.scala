@@ -20,10 +20,10 @@ object Starter extends App {
   });
 
   var handler = (req: IncomingMessage, res: ServerResponse) => {
-    val parse = URL.parse(req.url, true)
+    val parse = URL.parse(req.url, false)
     val pathname = parse.pathname.get
     if (pathname.equals("/getWeather")) {
-      val params = QueryString.parse(parse.search.getOrElse(""))
+      val params = QueryString.parse(parse.query.getOrElse(""))
       val longitude = params.getOrElse("longitude", "0").toDouble
       val latitude = params.getOrElse("latitude", "0").toDouble
       res.writeHead(200, js.Dictionary(
@@ -56,7 +56,7 @@ object Starter extends App {
         ));
         res.write("hello nodejs");
         res.end();
-      }, 2000);
+      }, 500);
     }
   }
 

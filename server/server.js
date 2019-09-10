@@ -2109,7 +2109,7 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
       console.log(err$2.stack)
     }))(this))));
     this.handler$1 = new $c_sjsr_AnonFunction2(((this$2) => ((req$2, res$2) => {
-      const parse = $i_url.parse($as_T(req$2.url), true);
+      const parse = $i_url.parse($as_T(req$2.url), false);
       const value = parse.pathname;
       if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException("undefined.get")
@@ -2117,7 +2117,7 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
       const pathname = $as_T(value);
       if ((pathname === "/getWeather")) {
         const jsx$1 = $i_querystring;
-        const value$1 = parse.search;
+        const value$1 = parse.query;
         const params = jsx$1.parse($as_T(((value$1 === (void 0)) ? "" : value$1)));
         const x1 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(params, "longitude")) ? new $c_s_Some(params.longitude) : $m_s_None$());
         let jsx$2;
@@ -2183,7 +2183,7 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
           });
           res$3.write("hello nodejs");
           res$3.end()
-        }))(this$2, res$2))), 2000)
+        }))(this$2, res$2))), 500)
       }
     }))(this));
     this.options$1 = new ($a_Lio_scalajs_nodejs_https_ServerOptions())();
