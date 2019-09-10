@@ -2156,7 +2156,7 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
         const $$this$1 = this$19.repr$1;
         const latitude = jsx$5.parseDouble__T__D($$this$1);
         res$2.writeHead(200, {
-          "content-type": "text/plain"
+          "content-type": "application/json;charset=utf-8"
         });
         const getWeatherReq = $i_http.request((((("http://api.map.baidu.com/telematics/v3/weather?location=" + longitude) + ",") + latitude) + "&output=json&ak=3253dd1e249d58370f8f9dc825099e4d"), $m_sjs_js_Any$().fromFunction1__F1__sjs_js_Function1(new $c_sjsr_AnonFunction1(((this$4$1, res) => ((weatherRes$2) => {
           weatherRes$2.on("data", $m_sjs_js_Any$().fromFunction1__F1__sjs_js_Function1(new $c_sjsr_AnonFunction1((($this$1, res$1) => ((data$2) => {

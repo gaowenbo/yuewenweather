@@ -27,7 +27,7 @@ object Starter extends App {
       val longitude = params.getOrElse("longitude", "0").toDouble
       val latitude = params.getOrElse("latitude", "0").toDouble
       res.writeHead(200, js.Dictionary(
-        "content-type" -> "text/plain"
+        "content-type" -> "application/json;charset=utf-8"
       ));
 
 
