@@ -64,7 +64,8 @@ object Starter extends App {
 
   var https = Https.createServer(
     js.Dictionary("key" -> Fs.readFileSync("server/key/2515456_yueyiwenhua.cn.key"),
-      "cert" -> Fs.readFileSync("server/key/2515456_yueyiwenhua.cn.pem")
+      "cert" -> Fs.readFileSync("server/key/2515456_yueyiwenhua.cn.pem"),
+      "ca" -> Fs.readFileSync("server/key/2515456_yueyiwenhua.cn.pem")
     ), handler)
   https.listen(443)
   var http = Http.createServer(handler)

@@ -2202,9 +2202,11 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
     const jsx$9 = $i_https;
     const y = $i_fs.readFileSync("server/key/2515456_yueyiwenhua.cn.key");
     const y$1 = $i_fs.readFileSync("server/key/2515456_yueyiwenhua.cn.pem");
+    const y$2 = $i_fs.readFileSync("server/key/2515456_yueyiwenhua.cn.pem");
     const jsx$8 = jsx$9.createServer({
       "key": y,
-      "cert": y$1
+      "cert": y$1,
+      "ca": y$2
     }, $m_sjs_js_Any$().fromFunction2__F2__sjs_js_Function2(this.handler$1));
     this.https$1 = jsx$8;
     this.https$1.listen(443);
