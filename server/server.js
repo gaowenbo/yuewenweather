@@ -2109,15 +2109,15 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
       console.log(err$2.stack)
     }))(this))));
     this.handler$1 = new $c_sjsr_AnonFunction2(((this$2) => ((req$2, res$2) => {
-      const l = $i_url.parse($as_T(req$2.url), true);
-      const value = l.path;
+      const parse = $i_url.parse($as_T(req$2.url), true);
+      const value = parse.pathname;
       if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException("undefined.get")
       };
-      const this$6 = $as_T(value);
-      if ((this$6 === "/getWeather")) {
+      const pathname = $as_T(value);
+      if ((pathname === "/getWeather")) {
         const jsx$1 = $i_querystring;
-        const value$1 = l.search;
+        const value$1 = parse.search;
         const params = jsx$1.parse($as_T(((value$1 === (void 0)) ? "" : value$1)));
         const x1 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(params, "longitude")) ? new $c_s_Some(params.longitude) : $m_s_None$());
         let jsx$2;
@@ -2133,9 +2133,9 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
           jsx$2 = "0"
         };
         const x$1 = $as_T(jsx$2);
-        const this$15 = new $c_sci_StringOps(x$1);
+        const this$14 = new $c_sci_StringOps(x$1);
         const jsx$3 = $m_jl_Double$();
-        const $$this = this$15.repr$1;
+        const $$this = this$14.repr$1;
         const longitude = jsx$3.parseDouble__T__D($$this);
         const x1$1 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(params, "latitude")) ? new $c_s_Some(params.latitude) : $m_s_None$());
         let jsx$4;
@@ -2151,9 +2151,9 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
           jsx$4 = "0"
         };
         const x$3 = $as_T(jsx$4);
-        const this$20 = new $c_sci_StringOps(x$3);
+        const this$19 = new $c_sci_StringOps(x$3);
         const jsx$5 = $m_jl_Double$();
-        const $$this$1 = this$20.repr$1;
+        const $$this$1 = this$19.repr$1;
         const latitude = jsx$5.parseDouble__T__D($$this$1);
         res$2.writeHead(200, {
           "content-type": "text/plain"
@@ -2170,32 +2170,20 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
         }))(this$2, res$2))));
         getWeatherReq.end();
         return (void 0)
+      } else if ((($uI(pathname.length) >= 0) && ($as_T(pathname.substring(0, $uI("/assets".length))) === "/assets"))) {
+        res$2.writeHead(200, "OK");
+        const jsx$7 = $i_fs;
+        const a$1 = ("server/dist/" + $as_T(pathname.substring(7)));
+        const readStream = jsx$7.createReadStream(a$1);
+        return readStream.pipe(res$2)
       } else {
-        const value$2 = l.path;
-        if ((value$2 === (void 0))) {
-          throw new $c_ju_NoSuchElementException("undefined.get")
-        };
-        const this$35 = $as_T(value$2);
-        if ((($uI(this$35.length) >= 0) && ($as_T(this$35.substring(0, $uI("/assets".length))) === "/assets"))) {
-          res$2.writeHead(200, "OK");
-          const jsx$7 = $i_fs;
-          const value$3 = l.path;
-          if ((value$3 === (void 0))) {
-            throw new $c_ju_NoSuchElementException("undefined.get")
-          };
-          const this$41 = $as_T(value$3);
-          const a$1 = ("server/dist/" + $as_T(this$41.substring(7)));
-          const readStream = jsx$7.createReadStream(a$1);
-          return readStream.pipe(res$2)
-        } else {
-          return setTimeout($m_sjs_js_Any$().fromFunction0__F0__sjs_js_Function0(new $c_sjsr_AnonFunction0(((this$5$1, res$3) => (() => {
-            res$3.writeHead(200, {
-              "content-type": "text/plain"
-            });
-            res$3.write("hello nodejs");
-            res$3.end()
-          }))(this$2, res$2))), 2000)
-        }
+        return setTimeout($m_sjs_js_Any$().fromFunction0__F0__sjs_js_Function0(new $c_sjsr_AnonFunction0(((this$5$1, res$3) => (() => {
+          res$3.writeHead(200, {
+            "content-type": "text/plain"
+          });
+          res$3.write("hello nodejs");
+          res$3.end()
+        }))(this$2, res$2))), 2000)
       }
     }))(this));
     this.options$1 = new ($a_Lio_scalajs_nodejs_https_ServerOptions())();

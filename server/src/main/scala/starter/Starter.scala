@@ -20,10 +20,10 @@ object Starter extends App {
   });
 
   var handler = (req: IncomingMessage, res: ServerResponse) => {
-    val l = URL.parse(req.url, true)
-    var json = ""
-    if (l.path.get.equals("/getWeather")) {
-      val params = QueryString.parse(l.search.getOrElse(""))
+    val parse = URL.parse(req.url, true)
+    val pathname = parse.pathname.get
+    if (pathname.equals("/getWeather")) {
+      val params = QueryString.parse(parse.search.getOrElse(""))
       val longitude = params.getOrElse("longitude", "0").toDouble
       val latitude = params.getOrElse("latitude", "0").toDouble
       res.writeHead(200, js.Dictionary(
@@ -43,9 +43,9 @@ object Starter extends App {
         }
       )
       getWeatherReq.end()
-    } else if (l.path.get.startsWith("/assets")) {
+    } else if (pathname.startsWith("/assets")) {
       res.writeHead(200, "OK")
-      val readStream = Fs.createReadStream("server/dist/" + l.path.get.substring(7))
+      val readStream = Fs.createReadStream("server/dist/" + pathname.substring(7))
 
       readStream.pipe(res)
 
