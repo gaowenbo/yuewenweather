@@ -7,7 +7,9 @@ import yuewen.model.{DayWeather, WeatherData, WeatherTip}
 import scala.collection.immutable.IntMap.Tip
 import scala.scalajs.js
 import scala.scalajs.js.Dictionary
+import scala.scalajs.js.annotation.JSExportTopLevel
 
+@JSExportTopLevel("dddddddd")
 class Index extends MiniPage{
   var data = new IndexData(null)
   val defaultFailFunction = (res: js.Dynamic) => {console.log(res)}
@@ -50,6 +52,6 @@ class Index extends MiniPage{
       None
     }
 
+  class IndexData(var weatherData: WeatherData) extends js.Object
 }
 
-class IndexData(var weatherData: WeatherData) extends js.Object
