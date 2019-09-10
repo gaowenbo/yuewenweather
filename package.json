@@ -1,42 +1,25 @@
 {
-  "name": "scalajs-starter",
-  "version": "1.0.9",
-  "description": "Scala.js starter",
+  "name": "yuewen",
+  "version": "1.0.0",
+  "description": "悦文天气",
   "main": "server/target/scala-2.12/server-fastopt.js",
   "scripts": {
     "build": "sbt fastOptJS copyDev",
     "start": "sbt run",
     "test": "sbt test",
     "clean": "sbt clean",
-    "example-es6-module": "node --experimental-modules examples/es6-module/index.mjs",
     "run": "node server/server.js",
     "clientBuild": "sbt client/fastOptJS client/copyDev"
   },
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/konradst/scalajs-starter.git"
+    "type": "git"
   },
   "keywords": [
     "Scala.js",
-    "JavaScript",
-    "TypeScript",
-    "starter",
-    "boilerplate",
-    "skeleton",
-    "VanillaJS",
-    "CommonJS",
-    "ES6 module",
-    "scalajs",
-    "mjs",
-    "npm",
     "node",
     "functional",
     "immutable"
   ],
-  "author": "Konrad Stobiecki",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/konradst/scalajs-starter/issues"
-  },
-  "homepage": "https://github.com/konradst/scalajs-starter#readme"
+  "author": "gaowenbo",
+  "license": "MIT"
 }
