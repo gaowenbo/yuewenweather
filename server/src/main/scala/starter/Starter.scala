@@ -49,6 +49,12 @@ object Starter extends App {
 
       readStream.pipe(res)
 
+    } else if (pathname.startsWith("/check")) {
+      res.writeHead(200, js.Dictionary(
+        "content-type" -> "text/plain"
+      ));
+      res.write("true");
+      res.end();
     } else {
       setTimeout(() => {
         res.writeHead(200, js.Dictionary(

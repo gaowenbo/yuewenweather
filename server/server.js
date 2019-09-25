@@ -2177,13 +2177,15 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
         const readStream = jsx$7.createReadStream(a$1);
         return readStream.pipe(res$2)
       } else {
-        return setTimeout($m_sjs_js_Any$().fromFunction0__F0__sjs_js_Function0(new $c_sjsr_AnonFunction0(((this$5$1, res$3) => (() => {
+        return ((($uI(pathname.length) >= 0) && ($as_T(pathname.substring(0, $uI("/check".length))) === "/check")) ? (res$2.writeHead(200, {
+          "content-type": "text/plain"
+        }), res$2.write("true"), res$2.end(), (void 0)) : setTimeout($m_sjs_js_Any$().fromFunction0__F0__sjs_js_Function0(new $c_sjsr_AnonFunction0(((this$5$1, res$3) => (() => {
           res$3.writeHead(200, {
             "content-type": "text/plain"
           });
           res$3.write("hello nodejs");
           res$3.end()
-        }))(this$2, res$2))), 500)
+        }))(this$2, res$2))), 500))
       }
     }))(this));
     this.options$1 = new ($a_Lio_scalajs_nodejs_https_ServerOptions())();
