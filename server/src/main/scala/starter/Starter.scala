@@ -50,10 +50,33 @@ object Starter extends App {
       readStream.pipe(res)
 
     } else if (pathname.startsWith("/check")) {
+      val params = QueryString.parse(parse.query.getOrElse(""))
+      val signature = params.get("signature").getOrElse("")
+      val echostr = params.get("echostr").getOrElse("")
+      val timestamp = params.get("timestamp").getOrElse("")
+      val nonce = params.get("nonce").getOrElse("")
+
+//      const signature = query.signature;
+//      const echostr = query.echostr;
+//      const timestamp = query.timestamp;
+//      const nonce = query.nonce;
+//
+//      // 拼成数组，字典排序，再拼接
+//      const tmpStr = [TOKEN, timestamp, nonce].sort().reduce((prev, cur) => prev + cur);
+//
+//      // sha1加密
+//      const sha1 = crypto.createHash('sha1');
+//      const sha1_result = sha1.update(tmpStr).digest('hex');
+//
+//      // 如果是来自微信的请求就返回echostr
+//      if (sha1_result === signature) {
+//        res.end(echostr);
+//      }
+
       res.writeHead(200, js.Dictionary(
         "content-type" -> "text/plain"
       ));
-      res.write("true");
+      res.write(echostr);
       res.end();
     } else {
       setTimeout(() => {

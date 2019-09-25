@@ -2176,29 +2176,45 @@ class $c_Lscalajs_starter_Starter$ extends $c_O {
         const a$1 = ("server/dist/" + $as_T(pathname.substring(7)));
         const readStream = jsx$7.createReadStream(a$1);
         return readStream.pipe(res$2)
-      } else {
-        return ((($uI(pathname.length) >= 0) && ($as_T(pathname.substring(0, $uI("/check".length))) === "/check")) ? (res$2.writeHead(200, {
+      } else if ((($uI(pathname.length) >= 0) && ($as_T(pathname.substring(0, $uI("/check".length))) === "/check"))) {
+        const jsx$8 = $i_querystring;
+        const value$2 = parse.query;
+        const params$2 = jsx$8.parse($as_T(((value$2 === (void 0)) ? "" : value$2)));
+        const this$44 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(params$2, "signature")) ? new $c_s_Some(params$2.signature) : $m_s_None$());
+        $as_T((this$44.isEmpty__Z() ? "" : this$44.get__O()));
+        const this$47 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(params$2, "echostr")) ? new $c_s_Some(params$2.echostr) : $m_s_None$());
+        const echostr = $as_T((this$47.isEmpty__Z() ? "" : this$47.get__O()));
+        const this$50 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(params$2, "timestamp")) ? new $c_s_Some(params$2.timestamp) : $m_s_None$());
+        $as_T((this$50.isEmpty__Z() ? "" : this$50.get__O()));
+        const this$53 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(params$2, "nonce")) ? new $c_s_Some(params$2.nonce) : $m_s_None$());
+        $as_T((this$53.isEmpty__Z() ? "" : this$53.get__O()));
+        res$2.writeHead(200, {
           "content-type": "text/plain"
-        }), res$2.write("true"), res$2.end(), (void 0)) : setTimeout($m_sjs_js_Any$().fromFunction0__F0__sjs_js_Function0(new $c_sjsr_AnonFunction0(((this$5$1, res$3) => (() => {
+        });
+        res$2.write(echostr);
+        res$2.end();
+        return (void 0)
+      } else {
+        return setTimeout($m_sjs_js_Any$().fromFunction0__F0__sjs_js_Function0(new $c_sjsr_AnonFunction0(((this$10$1, res$3) => (() => {
           res$3.writeHead(200, {
             "content-type": "text/plain"
           });
           res$3.write("hello nodejs");
           res$3.end()
-        }))(this$2, res$2))), 500))
+        }))(this$2, res$2))), 500)
       }
     }))(this));
     this.options$1 = new ($a_Lio_scalajs_nodejs_https_ServerOptions())();
-    const jsx$9 = $i_https;
+    const jsx$10 = $i_https;
     const y = $i_fs.readFileSync("server/key/2515456_yueyiwenhua.cn.key");
     const y$1 = $i_fs.readFileSync("server/key/2515456_yueyiwenhua.cn.pem");
     const y$2 = $i_fs.readFileSync("server/key/2515456_yueyiwenhua.cn.pem");
-    const jsx$8 = jsx$9.createServer({
+    const jsx$9 = jsx$10.createServer({
       "key": y,
       "cert": y$1,
       "ca": y$2
     }, $m_sjs_js_Any$().fromFunction2__F2__sjs_js_Function2(this.handler$1));
-    this.https$1 = jsx$8;
+    this.https$1 = jsx$9;
     this.https$1.listen(443);
     this.http$1 = $i_http.createServer($m_sjs_js_Any$().fromFunction2__F2__sjs_js_Function2(this.handler$1));
     this.http$1.listen(80)
@@ -4064,6 +4080,12 @@ const $d_jl_NumberFormatException = new $TypeData().initClass({
 });
 $c_jl_NumberFormatException.prototype.$classData = $d_jl_NumberFormatException;
 class $c_s_None$ extends $c_s_Option {
+  isEmpty__Z() {
+    return true
+  };
+  get__E() {
+    throw new $c_ju_NoSuchElementException("None.get")
+  };
   productPrefix__T() {
     return "None"
   };
@@ -4081,6 +4103,9 @@ class $c_s_None$ extends $c_s_Option {
   };
   toString__T() {
     return "None"
+  };
+  get__O() {
+    this.get__E()
   };
 }
 const $d_s_None$ = new $TypeData().initClass({
@@ -4107,6 +4132,12 @@ class $c_s_Some extends $c_s_Option {
     super();
     this.value$2 = null;
     this.value$2 = value
+  };
+  isEmpty__Z() {
+    return false
+  };
+  get__O() {
+    return this.value$2
   };
   productPrefix__T() {
     return "Some"
